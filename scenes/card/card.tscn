@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://djpt474u6wt6k"]
+
+[ext_resource type="Script" uid="uid://dac6u8s6r01pa" path="res://scenes/card/card.gd" id="1_2ufkr"]
+[ext_resource type="Shader" uid="uid://hnlyrwoo0g4k" path="res://components/shaders/2d_outline.gdshader" id="1_g65cd"]
+[ext_resource type="Script" uid="uid://ddaliy5pnt56b" path="res://components/outline_highlighter.gd" id="1_imta7"]
+[ext_resource type="Texture2D" uid="uid://bbxowxm8pc62h" path="res://assets/sprites/card/tileset_cards_32x32.png" id="2_2ufkr"]
+[ext_resource type="Script" uid="uid://sskq6vc367sd" path="res://components/drag_and_drop.gd" id="2_vtcvk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g65cd"]
+size = Vector2(36, 36)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaf1t"]
+shader = ExtResource("1_g65cd")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1
+
+[node name="Card" type="Area2D" groups=["cards"]]
+script = ExtResource("1_2ufkr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_g65cd")
+
+[node name="Visuals" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_kaf1t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+unique_name_in_owner = true
+texture = ExtResource("2_2ufkr")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="OutlineHighlighter" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_imta7")
+
+[node name="DragAndDrop" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_vtcvk")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
