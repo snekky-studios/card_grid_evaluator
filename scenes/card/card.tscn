@@ -10,6 +10,7 @@
 size = Vector2(36, 36)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kaf1t"]
+resource_local_to_scene = true
 shader = ExtResource("1_g65cd")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1

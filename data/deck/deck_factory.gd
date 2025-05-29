@@ -15,7 +15,7 @@ static func build() -> Deck:
 			var card : CardData = CardData.new()
 			card.rank = index_rank
 			card.suit = index_suit
-			deck.add_card(card)
+			deck.add_card_draw_pile(card)
 	error = _save(deck, dir_path + file_prefix + file_name + file_suffix)
 	assert(error == OK, "Save error: " + str(error))
 	return deck

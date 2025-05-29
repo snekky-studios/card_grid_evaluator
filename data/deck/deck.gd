@@ -1,7 +1,7 @@
 extends Resource
 class_name Deck
 
-var draw_pile : Array[CardData] = [] # pool of cards that are drawn from
+@export var draw_pile : Array[CardData] = [] # pool of cards that are drawn from
 var discard_pile : Array[CardData] = [] # pool of card where discards go
 var in_use_pile : Array[CardData] = [] # pool of cards that are being used by some other entity (ex. in a hand)
 #var index : int = 0 # keeps track of the current "top card" on the deck
@@ -97,4 +97,6 @@ func _to_string() -> String:
 	var deck : Array[CardData] = get_full_deck()
 	for index_card : int in range(deck.size()):
 		output += deck[index_card]._to_string() + ","
+		if((index_card + 1) % 13 == 0):
+			output += "\n"
 	return output

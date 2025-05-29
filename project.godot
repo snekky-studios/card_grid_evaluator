@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="card_grid_evaluator"
-run/main_scene="uid://yg81315mb3fh"
+run/main_scene="uid://c13jipcickpns"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://assets/sprites/misc/icon.svg"
+
+[autoload]
+
+Globals="*res://singletons/globals.gd"
 
 [debug]
 

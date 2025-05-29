@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cd5n2wr2q5c3q"]
+
+[ext_resource type="FontFile" uid="uid://3nan4hbi5d58" path="res://assets/fonts/m5x7.ttf" id="1_ndjfm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndjfm"]
+
+[resource]
+default_font = ExtResource("1_ndjfm")
+default_font_size = 32
+Button/styles/focus = SubResource("StyleBoxEmpty_ndjfm")

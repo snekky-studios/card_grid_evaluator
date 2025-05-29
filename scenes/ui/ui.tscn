@@ -1,0 +1,238 @@
+[gd_scene load_steps=4 format=3 uid="uid://exbh3acvat56"]
+
+[ext_resource type="Script" uid="uid://0lcys1k42thd" path="res://scenes/ui/ui.gd" id="1_u7n8c"]
+[ext_resource type="Texture2D" uid="uid://c6tvgq0eudnob" path="res://assets/sprites/card/deck.png" id="2_f5cxw"]
+[ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="2_g5kmx"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u7n8c")
+
+[node name="VBoxContainerButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ButtonDeal" type="Button" parent="VBoxContainerButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+icon = ExtResource("2_f5cxw")
+
+[node name="ButtonOK" type="Button" parent="VBoxContainerButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+text = "OK"
+
+[node name="VBoxContainerHands" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="HBoxContainerRow0" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerRow0"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Row 0:"
+
+[node name="LabelHandRow0" type="Label" parent="VBoxContainerHands/HBoxContainerRow0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerRow1" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerRow1"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Row 1:"
+
+[node name="LabelHandRow1" type="Label" parent="VBoxContainerHands/HBoxContainerRow1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerRow2" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerRow2"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Row 2:"
+
+[node name="LabelHandRow2" type="Label" parent="VBoxContainerHands/HBoxContainerRow2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerRow3" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerRow3"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Row 3:"
+
+[node name="LabelHandRow3" type="Label" parent="VBoxContainerHands/HBoxContainerRow3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerRow4" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerRow4"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Row 4:"
+
+[node name="LabelHandRow4" type="Label" parent="VBoxContainerHands/HBoxContainerRow4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerCol0" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerCol0"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Col 0:"
+
+[node name="LabelHandCol0" type="Label" parent="VBoxContainerHands/HBoxContainerCol0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerCol1" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerCol1"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Col 1:"
+
+[node name="LabelHandCol1" type="Label" parent="VBoxContainerHands/HBoxContainerCol1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerCol2" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerCol2"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Col 2:"
+
+[node name="LabelHandCol2" type="Label" parent="VBoxContainerHands/HBoxContainerCol2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerCol3" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerCol3"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Col 3:"
+
+[node name="LabelHandCol3" type="Label" parent="VBoxContainerHands/HBoxContainerCol3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2
+
+[node name="HBoxContainerCol4" type="HBoxContainer" parent="VBoxContainerHands"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerHands/HBoxContainerCol4"]
+custom_minimum_size = Vector2(33, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "Col 4:"
+
+[node name="LabelHandCol4" type="Label" parent="VBoxContainerHands/HBoxContainerCol4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(87, 0)
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+theme_override_font_sizes/font_size = 16
+text = "NONE"
+horizontal_alignment = 2

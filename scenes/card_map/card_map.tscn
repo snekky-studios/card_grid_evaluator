@@ -2,8 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://bhpf7gnsdfcav" path="res://scenes/card_map/tileset_card_map.tres" id="1_5ebia"]
 [ext_resource type="Script" uid="uid://r4t4ks3vyert" path="res://scenes/card_map/card_map.gd" id="1_t5n8g"]
-[ext_resource type="Script" uid="uid://dxb1sge0jdk0i" path="res://components/card_grid.gd" id="2_6qu1u"]
-[ext_resource type="Script" uid="uid://b2ek5a1kqcqyl" path="res://components/tile_highlighter.gd" id="3_5ebia"]
+[ext_resource type="Script" uid="uid://dxb1sge0jdk0i" path="res://scenes/card_map/card_grid.gd" id="2_6qu1u"]
+[ext_resource type="Script" uid="uid://b2ek5a1kqcqyl" path="res://scenes/card_map/tile_highlighter.gd" id="3_5ebia"]
 
 [node name="CardMap" type="TileMapLayer"]
 tile_set = ExtResource("1_5ebia")

@@ -26,6 +26,12 @@ func _ready() -> void:
 	tile_highlighter.tile = TILE_HIGHLIGHT_COORDINATES
 	return
 
+func num_rows() -> int:
+	return grid_size.y
+
+func num_cols() -> int:
+	return grid_size.x
+
 func get_tile_from_global(global : Vector2) -> Vector2i:
 	return local_to_map(to_local(global))
 

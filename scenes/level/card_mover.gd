@@ -45,7 +45,7 @@ func _move_card(card : Card, card_map : CardMap, tile : Vector2i) -> void:
 	# add card to card_grid dictionary
 	card_map.card_grid.add_card(tile, card)
 	# move card to new tile, with offset to account for tile center
-	card.global_position = card_map.get_global_from_tile(tile) - Game.CELL_SIZE_HALF
+	card.global_position = card_map.get_global_from_tile(tile) - Globals.CELL_SIZE_HALF
 	# change child ownership of card to new card_grid
 	card.reparent(card_map.card_grid)
 	return
