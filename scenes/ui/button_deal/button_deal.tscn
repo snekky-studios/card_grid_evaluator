@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=3 uid="uid://dkqga2w6y4mnd"]
+
+[ext_resource type="Script" uid="uid://b14kxx0njegv1" path="res://scenes/ui/button_deal/button_deal.gd" id="1_iw4xn"]
+[ext_resource type="Texture2D" uid="uid://c6tvgq0eudnob" path="res://assets/sprites/card/deck.png" id="2_7geri"]
+[ext_resource type="Shader" uid="uid://hnlyrwoo0g4k" path="res://components/shaders/2d_outline.gdshader" id="2_xsrxp"]
+[ext_resource type="Shader" uid="uid://b4ebpp86vknoj" path="res://components/shaders/flash.gdshader" id="3_bs174"]
+[ext_resource type="Script" uid="uid://ddaliy5pnt56b" path="res://components/outline_highlighter.gd" id="3_mww2l"]
+[ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="4_586am"]
+[ext_resource type="Texture2D" uid="uid://ki8ol4gq6nwv" path="res://assets/sprites/misc/dollar_sign.png" id="5_xsrxp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bs174"]
+resource_local_to_scene = true
+shader = ExtResource("2_xsrxp")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmgsd"]
+shader = ExtResource("3_bs174")
+shader_parameter/u_enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_586am"]
+size = Vector2(32, 40)
+
+[sub_resource type="Animation" id="Animation_fmgsd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:material:shader_parameter/u_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bs174"]
+resource_name = "flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:material:shader_parameter/u_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmgsd"]
+_data = {
+&"RESET": SubResource("Animation_fmgsd"),
+&"flash": SubResource("Animation_bs174")
+}
+
+[node name="ButtonDeal" type="Area2D"]
+script = ExtResource("1_iw4xn")
+
+[node name="Visuals" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_bs174")
+position = Vector2(18, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fmgsd")
+texture = ExtResource("2_7geri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, 16)
+shape = SubResource("RectangleShape2D_586am")
+
+[node name="OutlineHighlighter" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_mww2l")
+metadata/_custom_type_script = "uid://ddaliy5pnt56b"
+
+[node name="LabelDeal" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 32.0
+offset_right = 35.0
+offset_bottom = 46.0
+theme = ExtResource("4_586am")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "DEAL"
+horizontal_alignment = 1
+
+[node name="HBoxMoney" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+offset_left = 3.0
+offset_top = 45.0
+offset_right = 34.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_586am")
+alignment = 1
+
+[node name="TextureRectDollarSign" type="TextureRect" parent="HBoxMoney"]
+layout_mode = 2
+theme = ExtResource("4_586am")
+texture = ExtResource("5_xsrxp")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxMoney"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_586am")
+
+[node name="LabelCost" type="Label" parent="HBoxMoney/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 13)
+layout_mode = 2
+theme = ExtResource("4_586am")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_fmgsd")
+}

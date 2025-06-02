@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="GridModifier" load_steps=6 format=3 uid="uid://cymqfct4mso7t"]
+
+[ext_resource type="Resource" path="res://data/card/cards/card_8s.tres" id="1_5dx3e"]
+[ext_resource type="Resource" path="res://data/card/cards/card_8h.tres" id="2_jjm1g"]
+[ext_resource type="Resource" path="res://data/card/cards/card_8d.tres" id="3_gnpb8"]
+[ext_resource type="Resource" path="res://data/card/cards/card_8c.tres" id="4_2wj1u"]
+[ext_resource type="Script" uid="uid://0p7dl0xsc7aq" path="res://data/modifier/level/grid/grid_modifier.gd" id="5_iv2w8"]
+
+[resource]
+script = ExtResource("5_iv2w8")
+cards = {
+Vector2i(0, 0): null,
+Vector2i(0, 1): null,
+Vector2i(0, 2): null,
+Vector2i(0, 3): null,
+Vector2i(0, 4): ExtResource("4_2wj1u"),
+Vector2i(1, 0): null,
+Vector2i(1, 1): ExtResource("2_jjm1g"),
+Vector2i(1, 2): null,
+Vector2i(1, 3): null,
+Vector2i(1, 4): null,
+Vector2i(2, 0): null,
+Vector2i(2, 1): null,
+Vector2i(2, 2): null,
+Vector2i(2, 3): null,
+Vector2i(2, 4): null,
+Vector2i(3, 0): null,
+Vector2i(3, 1): null,
+Vector2i(3, 2): null,
+Vector2i(3, 3): ExtResource("3_gnpb8"),
+Vector2i(3, 4): null,
+Vector2i(4, 0): ExtResource("1_5dx3e"),
+Vector2i(4, 1): null,
+Vector2i(4, 2): null,
+Vector2i(4, 3): null,
+Vector2i(4, 4): null
+}

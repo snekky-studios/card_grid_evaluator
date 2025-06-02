@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://78t663t3whpc"]
+
+[ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="1_wql4h"]
+
+[node name="PanelObjective" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -426.0
+offset_bottom = -274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wql4h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+
+[node name="HBoxContainerTop" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+
+[node name="LabelName" type="Label" parent="VBoxContainer/HBoxContainerTop"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+text = "Name"
+
+[node name="HBoxContainerPayout" type="HBoxContainer" parent="VBoxContainer/HBoxContainerTop"]
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainerTop/HBoxContainerPayout"]
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+text = "Payout:"
+
+[node name="LabelPayout" type="Label" parent="VBoxContainer/HBoxContainerTop/HBoxContainerPayout"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+text = "$10"
+
+[node name="LabelRequirement" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+text = "Make a Pair of 2's"
+
+[node name="HBoxContainerProgress" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainerProgress"]
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+text = "Progress:"
+
+[node name="LabelProgress" type="Label" parent="VBoxContainer/HBoxContainerProgress"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_wql4h")
+text = "Incomplete"

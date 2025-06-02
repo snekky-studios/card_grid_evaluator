@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DealCostModifier" load_steps=2 format=3 uid="uid://dvweev4bqi00k"]
+
+[ext_resource type="Script" uid="uid://coe6x8134rvxg" path="res://data/modifier/level/deal_cost/deal_cost_modifier.gd" id="1_bnbvr"]
+
+[resource]
+script = ExtResource("1_bnbvr")
+initial_cost = 1
+cost_increase = 1
+metadata/_custom_type_script = "uid://coe6x8134rvxg"

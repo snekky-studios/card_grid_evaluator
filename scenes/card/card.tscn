@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://djpt474u6wt6k"]
+[gd_scene load_steps=11 format=3 uid="uid://djpt474u6wt6k"]
 
 [ext_resource type="Script" uid="uid://dac6u8s6r01pa" path="res://scenes/card/card.gd" id="1_2ufkr"]
 [ext_resource type="Shader" uid="uid://hnlyrwoo0g4k" path="res://components/shaders/2d_outline.gdshader" id="1_g65cd"]
 [ext_resource type="Script" uid="uid://ddaliy5pnt56b" path="res://components/outline_highlighter.gd" id="1_imta7"]
 [ext_resource type="Texture2D" uid="uid://bbxowxm8pc62h" path="res://assets/sprites/card/tileset_cards_32x32.png" id="2_2ufkr"]
 [ext_resource type="Script" uid="uid://sskq6vc367sd" path="res://components/drag_and_drop.gd" id="2_vtcvk"]
+[ext_resource type="Shader" uid="uid://cx75hltkhq8lt" path="res://scenes/card/card_locked_fixed.gdshader" id="3_ri62e"]
+[ext_resource type="Script" uid="uid://c7m7lje3ei1j4" path="res://scenes/card/card_locker_fixer.gd" id="7_ri62e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g65cd"]
 size = Vector2(36, 36)
@@ -14,6 +16,15 @@ resource_local_to_scene = true
 shader = ExtResource("1_g65cd")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ri62e"]
+resource_local_to_scene = true
+shader = ExtResource("3_ri62e")
+shader_parameter/u_locked = false
+shader_parameter/u_fixed = false
+shader_parameter/u_color_replace = Color(1, 1, 1, 1)
+shader_parameter/u_color_locked = Color(1, 1, 1, 1)
+shader_parameter/u_color_fixed = Color(1, 1, 1, 1)
 
 [node name="Card" type="Area2D" groups=["cards"]]
 script = ExtResource("1_2ufkr")
@@ -28,6 +39,7 @@ material = SubResource("ShaderMaterial_kaf1t")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ri62e")
 texture = ExtResource("2_2ufkr")
 centered = false
 region_enabled = true
@@ -40,6 +52,11 @@ script = ExtResource("1_imta7")
 [node name="DragAndDrop" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_vtcvk")
+
+[node name="CardLockerFixer" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_ri62e")
+metadata/_custom_type_script = "uid://c7m7lje3ei1j4"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

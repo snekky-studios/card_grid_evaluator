@@ -85,6 +85,9 @@ func _on_card_dropped(starting_position : Vector2, card : Card) -> void:
 	# tile is occupied, swap card with card on the tile
 	if(area_dropped.card_grid.is_tile_occupied(tile_dropped)):
 		var card_to_swap : Card = area_dropped.card_grid.cards[tile_dropped]
+		if(card_to_swap.data.is_locked or card_to_swap.data.is_fixed):
+			_reset_card_to_starting_position(starting_position, card)
+			return
 		area_dropped.card_grid.remove_card(tile_dropped)
 		_move_card(card_to_swap, area_start, tile_start)
 	# regardless if the tile was occupied, the card gets added

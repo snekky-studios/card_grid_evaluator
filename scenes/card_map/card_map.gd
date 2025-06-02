@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	card_grid.size = grid_size
 	
-	tile_highlighter.enabled = true
+	tile_highlighter.enabled = false
 	tile_highlighter.card_map = self
 	tile_highlighter.highlight_layer = tile_map_highlight
 	tile_highlighter.tile = TILE_HIGHLIGHT_COORDINATES

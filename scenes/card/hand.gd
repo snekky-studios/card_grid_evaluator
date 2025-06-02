@@ -26,7 +26,7 @@ const RankName : Dictionary = {
 	Rank.STRAIGHT : "STRAIGHT",
 	Rank.FLUSH : "FLUSH",
 	Rank.FULL_HOUSE : "FULL HOUSE",
-	Rank.FOUR_OF_A_KIND : "FOUR_OF A KIND",
+	Rank.FOUR_OF_A_KIND : "FOUR OF A KIND",
 	Rank.STRAIGHT_FLUSH : "STRAIGHT FLUSH",
 	Rank.FIVE_OF_A_KIND : "FIVE OF A KIND",
 	Rank.FLUSH_HOUSE : "FLUSH HOUSE",
@@ -68,8 +68,8 @@ static func rank(hand : Array[CardData]) -> Rank:
 	var hand_sorted : Array[CardData] = sort(hand)
 	
 	# store these in variables to avoid processing more than once
-	var is_flush : bool = is_flush(hand_sorted)
-	var is_straight : bool = is_straight(hand_sorted)
+	var is_flush : bool = _is_flush(hand_sorted)
+	var is_straight : bool = _is_straight(hand_sorted)
 	
 	# check for straight flush and flush
 	if(is_flush and is_straight):
@@ -118,8 +118,42 @@ static func rank(hand : Array[CardData]) -> Rank:
 	# was not anything else, must be high card
 	return Rank.HIGH_CARD
 
+# returns the card rank that appears most often in the hand
+static func card_rank_mode(hand : Array[CardData]) -> int:
+	var counter : Array[int] = []
+	counter.resize(CardData.NUM_RANKS)
+	counter.fill(0)
+	# count how many of each rank appears in the hand
+	for index_hand : int in range(hand.size()):
+		counter[hand[index_hand].rank] += 1
+	# find the rank that appears the most
+	var card_rank_count_max : int = 0
+	var card_rank_max : int = CardData.RANK_ERROR
+	for index_counter : int in range(counter.size()):
+		if(counter[index_counter] > card_rank_count_max):
+			card_rank_count_max = counter[index_counter]
+			card_rank_max = index_counter
+	return card_rank_max
+
+# returns the card suit that appears most often in the hand
+static func card_suit_mode(hand : Array[CardData]) -> int:
+	var counter : Array[int] = []
+	counter.resize(CardData.NUM_SUITS)
+	counter.fill(0)
+	# count how many of each suit appears in the hand
+	for index_hand : int in range(hand.size()):
+		counter[hand[index_hand].suit] += 1
+	# find the suit that appears the most
+	var card_suit_count_max : int = 0
+	var card_suit_max : int = CardData.RANK_ERROR
+	for index_counter : int in range(counter.size()):
+		if(counter[index_counter] > card_suit_count_max):
+			card_suit_count_max = counter[index_counter]
+			card_suit_max = index_counter
+	return card_suit_max
+
 # returns true if the hand has five cards of the same suit, false otherwise
-static func is_flush(hand : Array[CardData]) -> bool:
+static func _is_flush(hand : Array[CardData]) -> bool:
 	# only a full 5 card hand can be a flush
 	if(hand.size() != NUM_CARDS_FULL_HAND):
 		return false
@@ -129,7 +163,7 @@ static func is_flush(hand : Array[CardData]) -> bool:
 	return true
 
 # returns true if the hand has five sequential cards, false otherwise
-static func is_straight(hand : Array[CardData]) -> bool:
+static func _is_straight(hand : Array[CardData]) -> bool:
 	# only a full 5 card hand can be a straight
 	if(hand.size() != NUM_CARDS_FULL_HAND):
 		return false

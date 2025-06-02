@@ -1,10 +1,11 @@
 extends Resource
 class_name Deck
 
+signal draw_pile_empty
+
 @export var draw_pile : Array[CardData] = [] # pool of cards that are drawn from
 var discard_pile : Array[CardData] = [] # pool of card where discards go
 var in_use_pile : Array[CardData] = [] # pool of cards that are being used by some other entity (ex. in a hand)
-#var index : int = 0 # keeps track of the current "top card" on the deck
 
 func add_card_draw_pile(card : CardData) -> void:
 	draw_pile.append(card)
@@ -77,6 +78,7 @@ func shuffle() -> void:
 # returns the top card of the draw_pile or returns null if the draw_pile is empty
 func deal() -> CardData:
 	if(draw_pile.size() <= 0):
+		draw_pile_empty.emit()
 		return null
 	return draw_pile.pop_front()
 

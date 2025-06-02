@@ -2,6 +2,7 @@ extends Node2D
 class_name CardGrid
 
 signal card_grid_changed
+signal card_grid_full
 
 const TILE_ERROR : Vector2i = Vector2i(-1, -1)
 
@@ -26,6 +27,22 @@ func remove_card(tile : Vector2i) -> void:
 	card_grid_changed.emit()
 	return
 
+# locks all cards in the grid
+func lock_cards() -> void:
+	for tile : Vector2i in cards:
+		var card : Card = cards[tile]
+		if(card != null and not card.data.is_fixed):
+			card.data.is_locked = true
+	return
+
+# unlocks all cards in the grid
+func unlock_cards() -> void:
+	for tile : Vector2i in cards:
+		var card : Card = cards[tile]
+		if(card != null):
+			card.data.is_locked = false
+	return
+
 # adds the card data from all cards in the given row to an array and returns it
 func get_row_of_cards(row : int) -> Array[CardData]:
 	var card_data_array : Array[CardData] = []
@@ -42,6 +59,20 @@ func get_column_of_cards(col : int) -> Array[CardData]:
 			card_data_array.append(cards[Vector2i(col, index_row)].data)
 	return card_data_array
 
+# returns true if any card in row is unlocked and unfixed, false otherwise
+func row_contains_new_cards(row : int) -> bool:
+	for index_col : int in range(size.x):
+		if(cards[Vector2i(index_col, row)] and not cards[Vector2i(index_col, row)].data.is_locked and not cards[Vector2i(index_col, row)].data.is_fixed):
+			return true
+	return false
+
+# returns true if any card in row is unlocked and unfixed, false otherwise
+func col_contains_new_cards(col : int) -> bool:
+	for index_row : int in range(size.y):
+		if(cards[Vector2i(col, index_row)] and not cards[Vector2i(col, index_row)].data.is_locked and not cards[Vector2i(col, index_row)].data.is_fixed):
+			return true
+	return false
+
 # returns true if the `tile` has a card associated with it, false otherwise
 func is_tile_occupied(tile : Vector2i) -> bool:
 	return cards[tile] != null
@@ -57,6 +88,7 @@ func get_first_empty_tile() -> Vector2i:
 		if not is_tile_occupied(tile):
 			return tile
 	# no empty tiles, return error value
+	card_grid_full.emit()
 	return TILE_ERROR
 
 # adds all cards in the dictionary to an array and returns it

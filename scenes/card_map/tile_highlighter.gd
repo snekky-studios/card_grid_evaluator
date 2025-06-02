@@ -1,7 +1,7 @@
 extends Node
 class_name TileHighlighter
 
-var enabled : bool = true : set = _set_enabled
+var enabled : bool = false : set = _set_enabled
 var card_map : CardMap = null : set = _set_card_map
 var highlight_layer : TileMapLayer = null
 var tile : Vector2i = Vector2i.ZERO
