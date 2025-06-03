@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Objective" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective.gd" id="1_t7g4i"]
+
+[resource]
+script = ExtResource("1_t7g4i")
+name = "Place 2 Nines in a Row"
+type = 2
+difficulty = 1
+payout = 20
+is_complete = false
+make_hand_rank = 0
+make_hand_card_rank = 13
+make_hand_suit = 4
+fill_tiles_unplaced = Array[Vector2i]([])
+fill_tiles_placed = Array[Vector2i]([])
+place_cards_suit = 4
+place_cards_rank = 8
+place_cards_num_max = 2
+place_cards_num_current = 0

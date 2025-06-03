@@ -15,37 +15,41 @@ enum Type {
 }
 
 enum Difficulty {
+	VERY_EASY,
 	EASY,
 	MEDIUM,
-	HARD
+	HARD,
+	VERY_HARD
 }
 
 const DifficultyName : Dictionary = {
+	Difficulty.VERY_EASY : "Very Easy",
 	Difficulty.EASY : "Easy",
 	Difficulty.MEDIUM : "Medium",
-	Difficulty.HARD : "Hard"
+	Difficulty.HARD : "Hard",
+	Difficulty.VERY_HARD : "Very Hard"
 }
 
-var name : String = "" : set = _set_name # name of the objective to be displayed in the UI
-var payout : int = 0 : set = _set_payout # how much money the objective returns if completed
-var type : Type = Type.MAKE_HAND : set = _set_type
-var difficulty : Difficulty = Difficulty.EASY : set = _set_difficulty
-var is_complete : bool = false : set = _set_is_complete
+@export var name : String = "" : set = _set_name # name of the objective to be displayed in the UI
+@export var type : Type = Type.MAKE_HAND : set = _set_type
+@export var difficulty : Difficulty = Difficulty.VERY_EASY : set = _set_difficulty
+@export var payout : int = 0 : set = _set_payout # how much money the objective returns if completed
+@export var is_complete : bool = false : set = _set_is_complete
 
 # applicable variables if objective type is MAKE_HAND
-var make_hand_rank : Hand.Rank = Hand.Rank.NONE : set = _set_make_hand_rank # Hand rank that must be made to complete objective
-var make_hand_card_rank : int = CardData.RANK_ERROR : set = _set_make_hand_card_rank # optional - card rank that must be used if hand rank is pair, three of a kind, four of a kind
-var make_hand_suit : int = CardData.SUIT_ERROR : set = _set_make_hand_suit # optional - suit that must be used if hand rank is flush, straight flush, flush house, flush five
+@export var make_hand_rank : Hand.Rank = Hand.Rank.NONE : set = _set_make_hand_rank # Hand rank that must be made to complete objective
+@export var make_hand_card_rank : int = CardData.RANK_ERROR : set = _set_make_hand_card_rank # optional - card rank that must be used if hand rank is pair, three of a kind, four of a kind
+@export var make_hand_suit : int = CardData.SUIT_ERROR : set = _set_make_hand_suit # optional - suit that must be used if hand rank is flush, straight flush, flush house, flush five
 
 # applicable variables if objective type is FILL_TILES
-var fill_tiles_unplaced : Array[Vector2i] = [] # list of tiles remaining to be placed 
-var fill_tiles_placed : Array[Vector2i] = [] # list of tiles that have had cards placed on them
+@export var fill_tiles_unplaced : Array[Vector2i] = [] # list of tiles remaining to be placed 
+@export var fill_tiles_placed : Array[Vector2i] = [] # list of tiles that have had cards placed on them
 
 # applicable variables if objective type is PLACE_CARDS
-var place_cards_suit : int = CardData.SUIT_ERROR : set = _set_place_cards_suit # suit of cards that must be placed in a row without playing others
-var place_cards_rank : int = CardData.RANK_ERROR : set = _set_place_cards_rank # rank of cards that must be placed in a row without playing others
-var place_cards_num_max : int = 0 : set = _set_place_cards_num_max # number of cards that must be placed in a row without playing others
-var place_cards_num_current : int = 0 : set = _set_place_cards_num_current # current number of cards that have been placed in a row without playing others
+@export var place_cards_suit : int = CardData.SUIT_ERROR : set = _set_place_cards_suit # suit of cards that must be placed in a row without playing others
+@export var place_cards_rank : int = CardData.RANK_ERROR : set = _set_place_cards_rank # rank of cards that must be placed in a row without playing others
+@export var place_cards_num_max : int = 0 : set = _set_place_cards_num_max # number of cards that must be placed in a row without playing others
+@export var place_cards_num_current : int = 0 : set = _set_place_cards_num_current # current number of cards that have been placed in a row without playing others
 
 #region Common Functions
 func _set_name(value : String) -> void:
@@ -84,7 +88,13 @@ func _set_make_hand_suit(value : int) -> void:
 #endregion
 
 #region FILL_TILES Functions
-
+func fill_tiles_place(tile : Vector2i) -> void:
+	if(not tile in fill_tiles_unplaced):
+		print("error: tile is not in objective list of unplaced tiles - ", tile)
+		return
+	fill_tiles_unplaced.erase(tile)
+	fill_tiles_placed.append(tile)
+	return
 #endregion
 
 #region PLACE_CARDS Functions
@@ -140,5 +150,5 @@ func _to_string() -> String:
 		_:
 			print("error: unrecognized objective type - ", type)
 	output += "Payout: $" + str(payout) + "\n"
-	output += "Status: " + (is_complete if "Complete\n" else "Incomplete\n")
+	output += "Status: " + ("Complete\n" if is_complete else "Incomplete\n")
 	return output

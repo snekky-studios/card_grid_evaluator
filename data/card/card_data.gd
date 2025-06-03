@@ -58,6 +58,8 @@ const SuitName : Dictionary = {
 
 const LUT_RANK : Array[String] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'E']
 const LUT_SUIT : Array[String] = ['s', 'h', 'd', 'c', 'e']
+const LUT_RANK_NAME : Array[String] = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
+const LUT_SUIT_NAME : Array[String] = ["Spade", "Heart", "Diamond", "Club"]
 
 const NUM_RANKS : int = 13
 const NUM_SUITS : int = 4
@@ -68,12 +70,14 @@ const RANK_JACK : int = 10
 const RANK_QUEEN : int = 11
 const RANK_KING : int = 12
 const RANK_ERROR : int = 13
+const RANKS : Array[int] = [RANK_ACE, 1, 2, 3, 4, 5, 6, 7, 8, RANK_TEN, RANK_JACK, RANK_QUEEN, RANK_KING]
 
 const SUIT_SPADE : int = 0
 const SUIT_HEART : int = 1
 const SUIT_DIAMOND : int = 2
 const SUIT_CLUB : int = 3
 const SUIT_ERROR : int = 4
+const SUITS : Array[int] = [SUIT_SPADE, SUIT_HEART, SUIT_DIAMOND, SUIT_CLUB]
 
 @export var rank : int = RANK_ERROR : set = _set_rank
 @export var suit : int = RANK_ERROR : set = _set_suit
