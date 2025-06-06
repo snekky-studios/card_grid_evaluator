@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObjectivePlaceCards" load_steps=2 format=3 uid="uid://dyxvqcnktdwr6"]
+
+[ext_resource type="Script" uid="uid://ddel6he2o04bx" path="res://data/objective/place_cards/objective_place_cards.gd" id="1_m7g2w"]
+
+[resource]
+script = ExtResource("1_m7g2w")
+suit = 4
+rank = 6
+num_max = 5
+num_current = 0
+name = "Place 5 Sevens in a Row"
+type = 3
+requirement = 2
+difficulty = 3
+payout = 40
+is_complete = false

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObjectivePlaceCards" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/place_cards/objective_place_cards.gd" id="1_chuvm"]
+
+[resource]
+script = ExtResource("1_chuvm")
+suit = 1
+rank = 13
+num_max = 7
+num_current = 0
+name = "Place 7 Hearts in a Row"
+type = 3
+requirement = 1
+difficulty = 2
+payout = 30
+is_complete = false

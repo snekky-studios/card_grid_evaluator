@@ -3,6 +3,8 @@ class_name CardGrid
 
 signal card_grid_changed
 signal card_grid_full
+signal card_added(card : CardData, tile : Vector2i)
+signal card_removed(card : CardData, tile : Vector2i)
 
 const TILE_ERROR : Vector2i = Vector2i(-1, -1)
 
@@ -16,6 +18,7 @@ func _ready() -> void:
 func add_card(tile : Vector2i, card : Node) -> void:
 	cards[tile] = card
 	card_grid_changed.emit()
+	card_added.emit(card.data, tile)
 	return
 
 # removes card from the `cards` dictionary
@@ -25,6 +28,7 @@ func remove_card(tile : Vector2i) -> void:
 		return
 	cards[tile] = null
 	card_grid_changed.emit()
+	card_removed.emit(card.data, tile)
 	return
 
 # locks all cards in the grid

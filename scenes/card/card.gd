@@ -32,6 +32,7 @@ func _ready() -> void:
 	outline_highlighter.outline_thickness = OUTLINE_THICKNESS
 	outline_highlighter.clear_highlight()
 	
+	card_locker_fixer.color_replace = Color(1.0, 0.969, 0.973)
 	card_locker_fixer.color_locked = Color(0.7, 0.7, 0.7)
 	card_locker_fixer.color_fixed = Color(1.0, 0.722, 0.82)
 	card_locker_fixer.sprite_2d = sprite_2d

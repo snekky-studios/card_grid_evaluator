@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://dkqga2w6y4mnd"]
 
 [ext_resource type="Script" uid="uid://b14kxx0njegv1" path="res://scenes/ui/button_deal/button_deal.gd" id="1_iw4xn"]
-[ext_resource type="Texture2D" uid="uid://c6tvgq0eudnob" path="res://assets/sprites/card/deck.png" id="2_7geri"]
 [ext_resource type="Shader" uid="uid://hnlyrwoo0g4k" path="res://components/shaders/2d_outline.gdshader" id="2_xsrxp"]
 [ext_resource type="Shader" uid="uid://b4ebpp86vknoj" path="res://components/shaders/flash.gdshader" id="3_bs174"]
 [ext_resource type="Script" uid="uid://ddaliy5pnt56b" path="res://components/outline_highlighter.gd" id="3_mww2l"]
 [ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="4_586am"]
-[ext_resource type="Texture2D" uid="uid://ki8ol4gq6nwv" path="res://assets/sprites/misc/dollar_sign.png" id="5_xsrxp"]
+[ext_resource type="Texture2D" uid="uid://bkxxeokg23isn" path="res://assets/sprites/card/deck_funkyfuture-8.png" id="4_bs174"]
+[ext_resource type="Texture2D" uid="uid://dc7hxkfuebhgt" path="res://assets/sprites/misc/dollar_sign_funkyfuture-8.png" id="7_fmgsd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bs174"]
 resource_local_to_scene = true
@@ -69,7 +69,7 @@ position = Vector2(18, 16)
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_fmgsd")
-texture = ExtResource("2_7geri")
+texture = ExtResource("4_bs174")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(18, 16)
@@ -86,8 +86,6 @@ offset_top = 32.0
 offset_right = 35.0
 offset_bottom = 46.0
 theme = ExtResource("4_586am")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
 text = "DEAL"
 horizontal_alignment = 1
 
@@ -105,7 +103,7 @@ alignment = 1
 [node name="TextureRectDollarSign" type="TextureRect" parent="HBoxMoney"]
 layout_mode = 2
 theme = ExtResource("4_586am")
-texture = ExtResource("5_xsrxp")
+texture = ExtResource("7_fmgsd")
 stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxMoney"]
@@ -118,8 +116,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(12, 13)
 layout_mode = 2
 theme = ExtResource("4_586am")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
 text = "1"
 horizontal_alignment = 1
 

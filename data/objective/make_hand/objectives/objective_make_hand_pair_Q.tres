@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectiveMakeHand" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/make_hand/objective_make_hand.gd" id="1_sp4wb"]
+
+[resource]
+script = ExtResource("1_sp4wb")
+rank = 2
+card_rank = 11
+suit = 4
+name = "Pair of Queens"
+type = 1
+requirement = 2
+difficulty = 1
+payout = 20
+is_complete = false

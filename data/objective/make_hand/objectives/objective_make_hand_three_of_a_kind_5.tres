@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectiveMakeHand" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/make_hand/objective_make_hand.gd" id="1_08o3e"]
+
+[resource]
+script = ExtResource("1_08o3e")
+rank = 4
+card_rank = 4
+suit = 4
+name = "Three of a Kind of Fives"
+type = 1
+requirement = 2
+difficulty = 2
+payout = 30
+is_complete = false

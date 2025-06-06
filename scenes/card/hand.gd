@@ -118,7 +118,7 @@ static func rank(hand : Array[CardData]) -> Rank:
 	# was not anything else, must be high card
 	return Rank.HIGH_CARD
 
-# returns the card rank that appears most often in the hand
+# returns the card rank that appears most often in the hand, or CarData.RANK_ERROR if all appear equal amounts of times
 static func card_rank_mode(hand : Array[CardData]) -> int:
 	var counter : Array[int] = []
 	counter.resize(CardData.NUM_RANKS)
@@ -135,7 +135,7 @@ static func card_rank_mode(hand : Array[CardData]) -> int:
 			card_rank_max = index_counter
 	return card_rank_max
 
-# returns the card suit that appears most often in the hand
+# returns the card suit that appears most often in the hand, or CarData.SUIT_ERROR if all appear equal amounts of times
 static func card_suit_mode(hand : Array[CardData]) -> int:
 	var counter : Array[int] = []
 	counter.resize(CardData.NUM_SUITS)
@@ -145,7 +145,7 @@ static func card_suit_mode(hand : Array[CardData]) -> int:
 		counter[hand[index_hand].suit] += 1
 	# find the suit that appears the most
 	var card_suit_count_max : int = 0
-	var card_suit_max : int = CardData.RANK_ERROR
+	var card_suit_max : int = CardData.SUIT_ERROR
 	for index_counter : int in range(counter.size()):
 		if(counter[index_counter] > card_suit_count_max):
 			card_suit_count_max = counter[index_counter]

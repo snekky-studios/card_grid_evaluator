@@ -1,61 +1,87 @@
-[gd_scene load_steps=2 format=3 uid="uid://78t663t3whpc"]
+[gd_scene load_steps=4 format=3 uid="uid://78t663t3whpc"]
 
 [ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="1_wql4h"]
+[ext_resource type="Script" uid="uid://7pe857ivm8fp" path="res://scenes/ui/panel_objective/panel_objective.gd" id="2_hswiw"]
+[ext_resource type="Texture2D" uid="uid://bnieeduej1oi0" path="res://assets/sprites/misc/card_grid_icon.png" id="3_ab57j"]
 
 [node name="PanelObjective" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -426.0
-offset_bottom = -274.0
+offset_right = -461.0
+offset_bottom = -298.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_wql4h")
+script = ExtResource("2_hswiw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme = ExtResource("1_wql4h")
+theme_override_constants/separation = 0
 
 [node name="HBoxContainerTop" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_wql4h")
 
-[node name="LabelName" type="Label" parent="VBoxContainer/HBoxContainerTop"]
+[node name="PanelContainerName" type="PanelContainer" parent="VBoxContainer/HBoxContainerTop"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme = ExtResource("1_wql4h")
+
+[node name="LabelName" type="Label" parent="VBoxContainer/HBoxContainerTop/PanelContainerName"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_wql4h")
+text = "Place 13 Diamonds in a Row"
+
+[node name="PanelContainerPayout" type="PanelContainer" parent="VBoxContainer/HBoxContainerTop"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_wql4h")
+
+[node name="LabelPayout" type="Label" parent="VBoxContainer/HBoxContainerTop/PanelContainerPayout"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_wql4h")
-text = "Name"
-
-[node name="HBoxContainerPayout" type="HBoxContainer" parent="VBoxContainer/HBoxContainerTop"]
-layout_mode = 2
-theme = ExtResource("1_wql4h")
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainerTop/HBoxContainerPayout"]
-layout_mode = 2
-theme = ExtResource("1_wql4h")
-text = "Payout:"
-
-[node name="LabelPayout" type="Label" parent="VBoxContainer/HBoxContainerTop/HBoxContainerPayout"]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("1_wql4h")
+theme_override_font_sizes/font_size = 16
 text = "$10"
 
-[node name="LabelRequirement" type="Label" parent="VBoxContainer"]
+[node name="PanelContainerRequirement" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainerRequirement"]
+layout_mode = 2
+
+[node name="LabelRequirement" type="Label" parent="VBoxContainer/PanelContainerRequirement/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_wql4h")
 text = "Make a Pair of 2's"
 
-[node name="HBoxContainerProgress" type="HBoxContainer" parent="VBoxContainer"]
+[node name="TextureRectTiles" type="TextureRect" parent="VBoxContainer/PanelContainerRequirement/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("3_ab57j")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PanelContainerProgress" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainerProgress" type="HBoxContainer" parent="VBoxContainer/PanelContainerProgress"]
 layout_mode = 2
 theme = ExtResource("1_wql4h")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainerProgress"]
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainerProgress/HBoxContainerProgress"]
 layout_mode = 2
 theme = ExtResource("1_wql4h")
 text = "Progress:"
 
-[node name="LabelProgress" type="Label" parent="VBoxContainer/HBoxContainerProgress"]
+[node name="LabelProgress" type="Label" parent="VBoxContainer/PanelContainerProgress/HBoxContainerProgress"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_wql4h")

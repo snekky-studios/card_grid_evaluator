@@ -1,7 +1,7 @@
 extends Node
 class_name ObjectiveFactory
 
-const dir_path : String = "res://data/objective/objectives/"
+const dir_path : String = "res://data/objective/"
 const file_prefix : String = "objective_"
 const file_suffix : String = ".tres"
 
@@ -56,23 +56,27 @@ const FILL_TILE_OBJECTIVE_NAME : Dictionary = {
 	"center" : "Center"
 }
 
+# if card_rank == ERROR and suit == ERROR, requirement = NONE
+# if card_rank != ERROR and suit == ERROR, requirement = CARD_RANK
+# if card_rank == ERROR and suit != ERROR, requirement = SUIT
 static func build_make_hand(hand_rank : Hand.Rank, card_rank : CardData.Rank, suit : CardData.Suit) -> void:
 	var error : Error = OK
-	var dir_folder : String = "make_hand/"
+	var dir_folder : String = "make_hand/objectives/"
 	var file_name : String = "make_hand_" + HAND_RANK_FILE_NAME[hand_rank]
-	var objective : Objective = Objective.new()
+	var objective : ObjectiveMakeHand = ObjectiveMakeHand.new()
 	objective.name = HAND_RANK_OBJECTIVE_NAME[hand_rank]
 	objective.type = Objective.Type.MAKE_HAND
-	objective.make_hand_rank = hand_rank
-	objective.make_hand_card_rank = card_rank
-	objective.make_hand_suit = suit
+	objective.rank = hand_rank
+	objective.card_rank = card_rank
+	objective.suit = suit
 	
 	# set objective difficulty and build objective name + file name
-	if(objective.make_hand_card_rank != CardData.RANK_ERROR):
+	if(objective.card_rank != CardData.RANK_ERROR):
 		# objective has a card rank requirement
-		file_name += "_" + CardData.LUT_RANK[objective.make_hand_card_rank]
-		objective.name += " of " + CardData.LUT_RANK_NAME[objective.make_hand_card_rank] + "s"
-		match objective.make_hand_rank:
+		file_name += "_" + CardData.LUT_RANK[objective.card_rank]
+		objective.name += " of " + CardData.LUT_RANK_NAME[objective.card_rank] + "s"
+		objective.requirement = Objective.Requirement.CARD_RANK
+		match objective.rank:
 			Hand.Rank.PAIR:
 				objective.difficulty = Objective.Difficulty.EASY
 			Hand.Rank.THREE_OF_A_KIND:
@@ -84,13 +88,14 @@ static func build_make_hand(hand_rank : Hand.Rank, card_rank : CardData.Rank, su
 			Hand.Rank.FLUSH_FIVE:
 				objective.difficulty = Objective.Difficulty.VERY_HARD
 			_:
-				print("error: hand rank incompatible with card rank requirement - ", objective.make_hand_rank)
-	elif(objective.make_hand_suit != CardData.SUIT_ERROR):
+				print("error: hand rank incompatible with card rank requirement - ", objective.rank)
+	elif(objective.suit != CardData.SUIT_ERROR):
 		# objective has a suit requirement
-		file_name += "_" + CardData.LUT_SUIT[objective.make_hand_suit]
+		file_name += "_" + CardData.LUT_SUIT[objective.suit]
 		# overwrite objective name, this particular case has a different format (ex. Spade Flush instead of Flush of Spades)
-		objective.name = CardData.LUT_SUIT_NAME[objective.make_hand_suit] + " " + HAND_RANK_OBJECTIVE_NAME[hand_rank]
-		match objective.make_hand_rank:
+		objective.name = CardData.LUT_SUIT_NAME[objective.suit] + " " + HAND_RANK_OBJECTIVE_NAME[hand_rank]
+		objective.requirement = Objective.Requirement.SUIT
+		match objective.rank:
 			Hand.Rank.FLUSH:
 				objective.difficulty = Objective.Difficulty.MEDIUM
 			Hand.Rank.STRAIGHT_FLUSH:
@@ -100,10 +105,11 @@ static func build_make_hand(hand_rank : Hand.Rank, card_rank : CardData.Rank, su
 			Hand.Rank.FLUSH_FIVE:
 				objective.difficulty = Objective.Difficulty.VERY_HARD
 			_:
-				print("error: hand rank incompatible with suit requirement - ", objective.make_hand_rank)
+				print("error: hand rank incompatible with suit requirement - ", objective.rank)
 	else:
 		# objective has no card rank or suit requirement
-		match objective.make_hand_rank:
+		objective.requirement = Objective.Requirement.NONE
+		match objective.rank:
 			Hand.Rank.PAIR:
 				objective.difficulty = Objective.Difficulty.VERY_EASY
 			Hand.Rank.TWO_PAIR:
@@ -127,7 +133,7 @@ static func build_make_hand(hand_rank : Hand.Rank, card_rank : CardData.Rank, su
 			Hand.Rank.FLUSH_FIVE:
 				objective.difficulty = Objective.Difficulty.HARD
 			_:
-				print("error: invalid hand rank - ", objective.make_hand_rank)
+				print("error: invalid hand rank - ", objective.rank)
 		pass
 	
 	# set objective payout
@@ -162,33 +168,41 @@ static func build_make_hand_all() -> void:
 				# no objectives for High Card
 				pass
 			Hand.Rank.PAIR:
+				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 				for card_rank : int in CardData.RANKS:
 					build_make_hand(hand_rank, card_rank, CardData.SUIT_ERROR)
 			Hand.Rank.TWO_PAIR:
 				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 			Hand.Rank.THREE_OF_A_KIND:
+				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 				for card_rank : int in CardData.RANKS:
 					build_make_hand(hand_rank, card_rank, CardData.SUIT_ERROR)
 			Hand.Rank.STRAIGHT:
 				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 			Hand.Rank.FLUSH:
+				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 				for suit : int in CardData.SUITS:
 					build_make_hand(hand_rank, CardData.RANK_ERROR, suit)
 			Hand.Rank.FULL_HOUSE:
 				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 			Hand.Rank.FOUR_OF_A_KIND:
+				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 				for card_rank : int in CardData.RANKS:
 					build_make_hand(hand_rank, card_rank, CardData.SUIT_ERROR)
 			Hand.Rank.STRAIGHT_FLUSH:
+				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 				for suit : int in CardData.SUITS:
 					build_make_hand(hand_rank, CardData.RANK_ERROR, suit)
 			Hand.Rank.FIVE_OF_A_KIND:
+				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 				for card_rank : int in CardData.RANKS:
 					build_make_hand(hand_rank, card_rank, CardData.SUIT_ERROR)
 			Hand.Rank.FLUSH_HOUSE:
+				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 				for suit : int in CardData.SUITS:
 					build_make_hand(hand_rank, CardData.RANK_ERROR, suit)
 			Hand.Rank.FLUSH_FIVE:
+				build_make_hand(hand_rank, CardData.RANK_ERROR, CardData.SUIT_ERROR)
 				for suit : int in CardData.SUITS:
 					build_make_hand(hand_rank, CardData.RANK_ERROR, suit)
 				for card_rank : int in CardData.RANKS:
@@ -200,9 +214,9 @@ static func build_make_hand_all() -> void:
 
 static func build_fill_tile(objective_name : String, tiles : Array[Vector2i], difficulty : Objective.Difficulty) -> void:
 	var error : Error = OK
-	var dir_folder : String = "fill_tiles/"
+	var dir_folder : String = "fill_tiles/objectives/"
 	var file_name : String = "fill_tiles_" + objective_name
-	var objective : Objective = Objective.new()
+	var objective : Objective = ObjectiveFillTiles.new()
 	
 	# set objective name
 	if(objective_name in FILL_TILE_OBJECTIVE_NAME.keys()):
@@ -212,7 +226,7 @@ static func build_fill_tile(objective_name : String, tiles : Array[Vector2i], di
 		objective.name = "Row " + row_string
 	elif(objective_name.contains("col")):
 		var col_string : String = objective_name[4] # col is always at index 4 in col_X strings
-		objective.name = "Col " + col_string
+		objective.name = "Column " + col_string
 	elif(objective_name.contains("cross")):
 		var col_string : String = objective_name[6] # col is always at index 6 in cross_XY strings
 		var row_string : String = objective_name[7] # row is always at index 7 in cross_XY strings
@@ -222,13 +236,14 @@ static func build_fill_tile(objective_name : String, tiles : Array[Vector2i], di
 		return
 	
 	objective.type = Objective.Type.FILL_TILES
+	objective.requirement = Objective.Requirement.NONE
 	objective.difficulty = difficulty
-	objective.fill_tiles_unplaced = []
-	objective.fill_tiles_placed = []
+	objective.tiles_to_place.clear()
+	objective.tiles_placed.clear()
 	
 	# add given tiles to unplaced tiles list
 	for tile : Vector2i in tiles:
-		objective.fill_tiles_unplaced.append(tile)
+		objective.tiles_to_place.append(tile)
 	
 	# set objective payout
 	match objective.difficulty:
@@ -353,28 +368,32 @@ static func build_fill_tile_all() -> void:
 	print("build complete: fill tile all")
 	return
 
+# if card_rank != ERROR and suit == ERROR, requirement = CARD_RANK
+# if card_rank == ERROR and suit != ERROR, requirement = SUIT
 static func build_place_cards(card_rank : CardData.Rank, suit : CardData.Suit, number : int) -> void:
 	var error : Error = OK
-	var dir_folder : String = "place_cards/"
+	var dir_folder : String = "place_cards/objectives/"
 	var file_name : String = "place_cards_"
-	var objective : Objective = Objective.new()
+	var objective : ObjectivePlaceCards = ObjectivePlaceCards.new()
 	objective.type = Objective.Type.PLACE_CARDS
-	objective.place_cards_rank = card_rank
-	objective.place_cards_suit = suit
-	objective.place_cards_num_current = 0
-	objective.place_cards_num_max = number
+	objective.rank = card_rank
+	objective.suit = suit
+	objective.num_current = 0
+	objective.num_max = number
 	
 	# set file name, objective name, and difficulty
-	if(objective.place_cards_rank != CardData.RANK_ERROR):
-		file_name += CardData.LUT_RANK[objective.place_cards_rank] + str(number)
-		objective.name = "Place " + str(number) + " " + CardData.LUT_RANK_NAME[objective.place_cards_rank]
-		if(objective.place_cards_num_max != 1):
+	if(objective.rank != CardData.RANK_ERROR):
+		# objective has a card rank requirement
+		file_name += CardData.LUT_RANK[objective.rank] + str(number)
+		objective.name = "Place " + str(number) + " " + CardData.LUT_RANK_NAME[objective.rank]
+		objective.requirement = Objective.Requirement.CARD_RANK
+		if(objective.num_max != 1):
 			# for grammar purposes
-			if(objective.place_cards_rank == 5):
+			if(objective.rank == 5):
 				# rank 6 need an e after the x for the plural form
 				objective.name += "e"
 			objective.name += "s in a Row"
-		match objective.place_cards_num_max:
+		match objective.num_max:
 			1:
 				objective.difficulty = Objective.Difficulty.VERY_EASY
 			2:
@@ -389,13 +408,15 @@ static func build_place_cards(card_rank : CardData.Rank, suit : CardData.Suit, n
 				objective.difficulty = Objective.Difficulty.VERY_HARD
 			_:
 				print("error: invalid number given to place cards (rank) - ", number)
-	elif(objective.place_cards_suit != CardData.SUIT_ERROR):
-		file_name += CardData.LUT_SUIT[objective.place_cards_suit] + str(number)
-		objective.name = "Place " + str(number) + " " + CardData.LUT_SUIT_NAME[objective.place_cards_suit]
-		if(objective.place_cards_num_max != 1):
+	elif(objective.suit != CardData.SUIT_ERROR):
+		# objective has a suit requirement
+		file_name += CardData.LUT_SUIT[objective.suit] + str(number)
+		objective.name = "Place " + str(number) + " " + CardData.LUT_SUIT_NAME[objective.suit]
+		objective.requirement = Objective.Requirement.SUIT
+		if(objective.num_max != 1):
 			# for grammar purposes
 			objective.name += "s in a Row"
-		match objective.place_cards_num_max:
+		match objective.num_max:
 			1:
 				objective.difficulty = Objective.Difficulty.VERY_EASY
 			2:

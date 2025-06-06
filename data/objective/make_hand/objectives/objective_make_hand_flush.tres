@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectiveMakeHand" load_steps=2 format=3 uid="uid://bji7c2rxe5t8i"]
+
+[ext_resource type="Script" uid="uid://dxt04s84tk25j" path="res://data/objective/make_hand/objective_make_hand.gd" id="1_ir8pc"]
+
+[resource]
+script = ExtResource("1_ir8pc")
+rank = 6
+card_rank = 13
+suit = 4
+name = "Flush"
+type = 1
+requirement = 0
+difficulty = 1
+payout = 20
+is_complete = false

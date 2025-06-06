@@ -5,9 +5,9 @@ var sprite_2d : Sprite2D = null : set = _set_sprite_2d
 var locked : bool = false : set = _set_locked
 var fixed : bool = false : set = _set_fixed
 
-var color_replace : Color = Color.WHITE
+var color_replace : Color = Color(1.0, 0.969, 0.973)
 var color_locked : Color = Color(0.7, 0.7, 0.7)
-var color_fixed : Color = Color(0.5, 0.5, 0.5)
+var color_fixed : Color = Color(1.0, 0.722, 0.82)
 
 func _ready() -> void:
 	

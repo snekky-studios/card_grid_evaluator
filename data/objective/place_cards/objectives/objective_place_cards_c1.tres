@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObjectivePlaceCards" load_steps=2 format=3 uid="uid://tx5s0dxhq60x"]
+
+[ext_resource type="Script" uid="uid://ddel6he2o04bx" path="res://data/objective/place_cards/objective_place_cards.gd" id="1_t7j0y"]
+
+[resource]
+script = ExtResource("1_t7j0y")
+suit = 3
+rank = 13
+num_max = 1
+num_current = 0
+name = "Place 1 Club"
+type = 3
+requirement = 1
+difficulty = 0
+payout = 10
+is_complete = false

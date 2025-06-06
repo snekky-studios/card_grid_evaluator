@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bhpf7gnsdfcav"]
 
-[ext_resource type="Texture2D" uid="uid://blep4q2ead23k" path="res://assets/sprites/background/tileset_board.png" id="1_ix23b"]
+[ext_resource type="Texture2D" uid="uid://bjwvi63lpb5jl" path="res://assets/sprites/background/tileset_board_funkyfuture-8.png" id="1_ix23b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uxdjl"]
 texture = ExtResource("1_ix23b")
@@ -11,4 +11,4 @@ texture_region_size = Vector2i(32, 32)
 
 [resource]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_uxdjl")
+sources/1 = SubResource("TileSetAtlasSource_uxdjl")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectiveMakeHand" load_steps=2 format=3 uid="uid://dbkvpq23udrqk"]
+
+[ext_resource type="Script" uid="uid://dxt04s84tk25j" path="res://data/objective/make_hand/objective_make_hand.gd" id="1_n4ofl"]
+
+[resource]
+script = ExtResource("1_n4ofl")
+rank = 10
+card_rank = 1
+suit = 4
+name = "Five of a Kind of Twos"
+type = 1
+requirement = 2
+difficulty = 4
+payout = 50
+is_complete = false
