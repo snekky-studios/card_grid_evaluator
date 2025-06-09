@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ObjectiveFillTiles" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_fill_tiles.gd" id="1_a2apb"]
+
+[resource]
+script = ExtResource("1_a2apb")
+tiles_to_place = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4)])
+tiles_placed = Array[Vector2i]([])
+name = "Column 1"
+type = 2
+requirement = 0
+difficulty = 0
+payout = 10
+is_complete = false

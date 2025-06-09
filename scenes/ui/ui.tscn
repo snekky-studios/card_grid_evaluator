@@ -48,6 +48,17 @@ layout_mode = 2
 theme = ExtResource("2_g5kmx")
 text = "0"
 
+[node name="LabelSlash" type="Label" parent="HBoxContainerScore"]
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+text = "/"
+
+[node name="LabelScoreGoal" type="Label" parent="HBoxContainerScore"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_g5kmx")
+text = "0"
+
 [node name="HBoxContainerMoney" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 16.0

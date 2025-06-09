@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectiveMakeHand" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_make_hand.gd" id="1_ckyjf"]
+
+[resource]
+script = ExtResource("1_ckyjf")
+rank = 7
+card_rank = 13
+suit = 4
+name = "Full House"
+type = 1
+requirement = 0
+difficulty = 1
+payout = 20
+is_complete = false

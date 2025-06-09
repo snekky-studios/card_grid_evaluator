@@ -12,6 +12,7 @@ var button_deal : ButtonDeal = null
 var button_submit : ButtonSubmit = null
 
 var label_score : Label = null
+var label_score_goal : Label = null
 var label_money : Label = null
 
 var vbox_container_objectives : VBoxContainer = null
@@ -32,6 +33,7 @@ func _ready() -> void:
 	button_deal = %ButtonDeal
 	button_submit = %ButtonSubmit
 	label_score = %LabelScore
+	label_score_goal = %LabelScoreGoal
 	label_money = %LabelMoney
 	vbox_container_objectives = %VBoxContainerObjectives
 	panel_container_hands = %PanelContainerHands
@@ -49,7 +51,7 @@ func _ready() -> void:
 	button_deal.button_deal_pressed.connect(_on_button_deal_pressed)
 	button_submit.button_submit_pressed.connect(_on_button_submit_pressed)
 	
-	create_panel_objectives(5)
+	create_panel_objectives(LevelData.NUM_OBJECTIVES)
 	return
 
 func create_panel_objectives(number : int) -> void:
@@ -57,6 +59,30 @@ func create_panel_objectives(number : int) -> void:
 		var panel_objective : PanelObjective = PANEL_OBJECTIVE.instantiate()
 		vbox_container_objectives.add_child(panel_objective)
 		panel_objectives.append(panel_objective)
+	return
+
+func set_score(value : int) -> void:
+	label_score.text = str(value)
+	return
+
+func set_score_goal(value : int) -> void:
+	
+	return
+
+func set_money(value : int) -> void:
+	label_money.text = "$" + str(value)
+	return
+
+func set_objective(objective : Objective, index_objective : int) -> void:
+	panel_objectives[index_objective].update(objective)
+	return
+
+func _on_button_deal_pressed() -> void:
+	button_deal_pressed.emit()
+	return
+
+func _on_button_submit_pressed() -> void:
+	button_submit_pressed.emit()
 	return
 
 func update_hand_rank(row : int, col : int, hand_rank_name : String) -> void:
@@ -91,24 +117,4 @@ func update_hand_rank(row : int, col : int, hand_rank_name : String) -> void:
 		_:
 			print("error: invalid col - ", col)
 	
-	return
-
-func set_score(value : int) -> void:
-	label_score.text = str(value)
-	return
-
-func set_money(value : int) -> void:
-	label_money.text = "$" + str(value)
-	return
-
-func set_objective(objective : Objective, index_objective : int) -> void:
-	panel_objectives[index_objective].update(objective)
-	return
-
-func _on_button_deal_pressed() -> void:
-	button_deal_pressed.emit()
-	return
-
-func _on_button_submit_pressed() -> void:
-	button_submit_pressed.emit()
 	return

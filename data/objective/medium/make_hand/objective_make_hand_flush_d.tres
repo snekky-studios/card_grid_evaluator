@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectiveMakeHand" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_make_hand.gd" id="1_18b7h"]
+
+[resource]
+script = ExtResource("1_18b7h")
+rank = 6
+card_rank = 13
+suit = 2
+name = "Diamond Flush"
+type = 1
+requirement = 1
+difficulty = 2
+payout = 30
+is_complete = false

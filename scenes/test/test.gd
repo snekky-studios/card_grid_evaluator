@@ -7,7 +7,7 @@ const GRID_MODIFIER_STANDARD : GridModifier = preload("res://data/modifier/level
 const GRID_MODIFIER_TWO_TOWERS : GridModifier = preload("res://data/modifier/level/grid/grid_modifiers/grid_modifier_two_towers.tres")
 
 func _ready() -> void:
-	ObjectiveFactory.build()
+	#ObjectiveFactory.build()
 	#GridModifierFactory.build("standard")
 	#GridModifierFactory.build("crazy_eights")
 	#GridModifierFactory.build("two_towers")
@@ -18,5 +18,6 @@ func _ready() -> void:
 	#print(GRID_MODIFIER_TWO_TOWERS._to_string())
 	#print("gone_fishing")
 	#print(GRID_MODIFIER_GONE_FISHING._to_string())
-	
+	var level_data : LevelData = LevelBuilder.build(LevelData.Difficulty.MEDIUM)
+	print(level_data._to_string())
 	return

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectiveMakeHand" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_make_hand.gd" id="1_bn43y"]
+
+[resource]
+script = ExtResource("1_bn43y")
+rank = 12
+card_rank = 13
+suit = 1
+name = "Heart Flush Five"
+type = 1
+requirement = 1
+difficulty = 4
+payout = 50
+is_complete = false

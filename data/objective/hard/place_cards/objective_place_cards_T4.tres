@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObjectivePlaceCards" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_place_cards.gd" id="1_85d40"]
+
+[resource]
+script = ExtResource("1_85d40")
+suit = 4
+rank = 9
+num_max = 4
+num_current = 0
+name = "Place 4 Tens in a Row"
+type = 3
+requirement = 2
+difficulty = 3
+payout = 40
+is_complete = false

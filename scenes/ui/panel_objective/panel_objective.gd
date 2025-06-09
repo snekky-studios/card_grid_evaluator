@@ -15,14 +15,6 @@ func _ready() -> void:
 	label_progress = %LabelProgress
 	
 	texture_rect_tiles.hide()
-	#var tiles : Array[Vector2i] = []
-	#tiles = []
-	#tiles.append(Vector2i(2, 0))
-	#tiles.append(Vector2i(0, 2))
-	#tiles.append(Vector2i(4, 2))
-	#tiles.append(Vector2i(2, 4))
-	#fill_tiles(tiles, Color.WHITE)
-	#fill_tiles([Vector2i(0, 0), Vector2i(3, 3)], Color.GREEN)
 	return
 
 # update contents to reflect state of objective

@@ -9,10 +9,6 @@ var objectives : Array[Objective] = []
 func _ready() -> void:
 	return
 
-func set_objectives(objectives_arg : Array[Objective]) -> void:
-	objectives = objectives_arg
-	return
-
 # checks for MAKE_HAND objective completions
 func _on_hand_evaluated(hand_rank : Hand.Rank, card_rank_mode : int, suit_mode : int) -> void:
 	for objective : Objective in objectives:
@@ -85,7 +81,7 @@ func _on_card_removed(card : CardData, tile : Vector2i) -> void:
 				print("error: invalid objective type - ", objective.type)
 	return
 
-
+# completes FILL_TILES and PLACE_CARDS objectives if they satisfy requirements
 func _on_board_submit() -> void:
 	for objective : Objective in objectives:
 		if(objective.is_complete):

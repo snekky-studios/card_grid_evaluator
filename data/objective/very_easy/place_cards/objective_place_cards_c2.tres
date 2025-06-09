@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObjectivePlaceCards" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_place_cards.gd" id="1_d86dx"]
+
+[resource]
+script = ExtResource("1_d86dx")
+suit = 3
+rank = 13
+num_max = 2
+num_current = 0
+name = "Place 2 Clubs in a Row"
+type = 3
+requirement = 1
+difficulty = 0
+payout = 10
+is_complete = false

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ObjectiveMakeHand" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_make_hand.gd" id="1_ygspc"]
+
+[resource]
+script = ExtResource("1_ygspc")
+rank = 2
+card_rank = 12
+suit = 4
+name = "Pair of Kings"
+type = 1
+requirement = 2
+difficulty = 1
+payout = 20
+is_complete = false

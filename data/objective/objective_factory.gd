@@ -53,7 +53,9 @@ const FILL_TILE_OBJECTIVE_NAME : Dictionary = {
 	"four_corners" : "Four Corners",
 	"compass" : "Compass",
 	"border" : "Border",
-	"center" : "Center"
+	"center" : "Center",
+	"checkerboard" : "Checkerboard",
+	"blackout" : "Blackout"
 }
 
 # if card_rank == ERROR and suit == ERROR, requirement = NONE
@@ -62,6 +64,8 @@ const FILL_TILE_OBJECTIVE_NAME : Dictionary = {
 static func build_make_hand(hand_rank : Hand.Rank, card_rank : CardData.Rank, suit : CardData.Suit) -> void:
 	var error : Error = OK
 	var dir_folder : String = "make_hand/objectives/"
+	var dir_folder_difficulty : String = ""
+	var dir_folder_type : String = "make_hand/"
 	var file_name : String = "make_hand_" + HAND_RANK_FILE_NAME[hand_rank]
 	var objective : ObjectiveMakeHand = ObjectiveMakeHand.new()
 	objective.name = HAND_RANK_OBJECTIVE_NAME[hand_rank]
@@ -136,24 +140,29 @@ static func build_make_hand(hand_rank : Hand.Rank, card_rank : CardData.Rank, su
 				print("error: invalid hand rank - ", objective.rank)
 		pass
 	
-	# set objective payout
+	# set objective payout and difficulty directory
 	match objective.difficulty:
 		Objective.Difficulty.VERY_EASY:
+			dir_folder_difficulty = "very_easy/"
 			objective.payout = PAYOUT_VERY_EASY
 		Objective.Difficulty.EASY:
+			dir_folder_difficulty = "easy/"
 			objective.payout = PAYOUT_EASY
 		Objective.Difficulty.MEDIUM:
+			dir_folder_difficulty = "medium/"
 			objective.payout = PAYOUT_MEDIUM
 		Objective.Difficulty.HARD:
+			dir_folder_difficulty = "hard/"
 			objective.payout = PAYOUT_HARD
 		Objective.Difficulty.VERY_HARD:
+			dir_folder_difficulty = "very_hard/"
 			objective.payout = PAYOUT_VERY_HARD
 		_:
 			print("error: invalid objective difficulty - ", objective.difficulty)
 	
 	objective.is_complete = false
 	
-	error = _save(objective, dir_path + dir_folder + file_prefix + file_name + file_suffix)
+	error = _save(objective, dir_path + dir_folder_difficulty + dir_folder_type + file_prefix + file_name + file_suffix)
 	assert(error == OK, "Save error: " + str(error))
 	print("build completed: ", objective.name)
 	return
@@ -214,7 +223,8 @@ static func build_make_hand_all() -> void:
 
 static func build_fill_tile(objective_name : String, tiles : Array[Vector2i], difficulty : Objective.Difficulty) -> void:
 	var error : Error = OK
-	var dir_folder : String = "fill_tiles/objectives/"
+	var dir_folder_difficulty : String = ""
+	var dir_folder_type : String = "fill_tiles/"
 	var file_name : String = "fill_tiles_" + objective_name
 	var objective : Objective = ObjectiveFillTiles.new()
 	
@@ -245,24 +255,29 @@ static func build_fill_tile(objective_name : String, tiles : Array[Vector2i], di
 	for tile : Vector2i in tiles:
 		objective.tiles_to_place.append(tile)
 	
-	# set objective payout
+	# set objective payout and difficulty directory
 	match objective.difficulty:
 		Objective.Difficulty.VERY_EASY:
+			dir_folder_difficulty = "very_easy/"
 			objective.payout = PAYOUT_VERY_EASY
 		Objective.Difficulty.EASY:
+			dir_folder_difficulty = "easy/"
 			objective.payout = PAYOUT_EASY
 		Objective.Difficulty.MEDIUM:
+			dir_folder_difficulty = "medium/"
 			objective.payout = PAYOUT_MEDIUM
 		Objective.Difficulty.HARD:
+			dir_folder_difficulty = "hard/"
 			objective.payout = PAYOUT_HARD
 		Objective.Difficulty.VERY_HARD:
+			dir_folder_difficulty = "very_hard/"
 			objective.payout = PAYOUT_VERY_HARD
 		_:
 			print("error: invalid objective difficulty - ", objective.difficulty)
 	
 	objective.is_complete = false
 	
-	error = _save(objective, dir_path + dir_folder + file_prefix + file_name + file_suffix)
+	error = _save(objective, dir_path + dir_folder_difficulty + dir_folder_type + file_prefix + file_name + file_suffix)
 	assert(error == OK, "Save error: " + str(error))
 	print("build completed: ", objective.name)
 	return
@@ -365,6 +380,27 @@ static func build_fill_tile_all() -> void:
 	difficulty = Objective.Difficulty.MEDIUM
 	build_fill_tile(objective_name, tiles, difficulty)
 	
+	# hard fill tile objectives
+	objective_name = "checkerboard"
+	tiles = []
+	for tile_row : int in range(0, Globals.GRID_NUM_ROWS):
+		for tile_col : int in range(0, Globals.GRID_NUM_COLS):
+			if((tile_row + tile_col) % 2 == 0):
+				var tile : Vector2i = Vector2i(tile_col, tile_row)
+				tiles.append(tile)
+	difficulty = Objective.Difficulty.HARD
+	build_fill_tile(objective_name, tiles, difficulty)
+	
+	# very hard fill tile objectives
+	objective_name = "blackout"
+	tiles = []
+	for tile_row : int in range(0, Globals.GRID_NUM_ROWS):
+		for tile_col : int in range(0, Globals.GRID_NUM_COLS):
+			var tile : Vector2i = Vector2i(tile_col, tile_row)
+			tiles.append(tile)
+	difficulty = Objective.Difficulty.VERY_HARD
+	build_fill_tile(objective_name, tiles, difficulty)
+	
 	print("build complete: fill tile all")
 	return
 
@@ -372,7 +408,8 @@ static func build_fill_tile_all() -> void:
 # if card_rank == ERROR and suit != ERROR, requirement = SUIT
 static func build_place_cards(card_rank : CardData.Rank, suit : CardData.Suit, number : int) -> void:
 	var error : Error = OK
-	var dir_folder : String = "place_cards/objectives/"
+	var dir_folder_difficulty : String = ""
+	var dir_folder_type : String = "place_cards/"
 	var file_name : String = "place_cards_"
 	var objective : ObjectivePlaceCards = ObjectivePlaceCards.new()
 	objective.type = Objective.Type.PLACE_CARDS
@@ -448,24 +485,29 @@ static func build_place_cards(card_rank : CardData.Rank, suit : CardData.Suit, n
 	else:
 		print("error: build_place_cards not supplied with either rank or suit data")
 	
-	# set objective payout
+	# set objective payout and difficulty directory
 	match objective.difficulty:
 		Objective.Difficulty.VERY_EASY:
+			dir_folder_difficulty = "very_easy/"
 			objective.payout = PAYOUT_VERY_EASY
 		Objective.Difficulty.EASY:
+			dir_folder_difficulty = "easy/"
 			objective.payout = PAYOUT_EASY
 		Objective.Difficulty.MEDIUM:
+			dir_folder_difficulty = "medium/"
 			objective.payout = PAYOUT_MEDIUM
 		Objective.Difficulty.HARD:
+			dir_folder_difficulty = "hard/"
 			objective.payout = PAYOUT_HARD
 		Objective.Difficulty.VERY_HARD:
+			dir_folder_difficulty = "very_hard/"
 			objective.payout = PAYOUT_VERY_HARD
 		_:
 			print("error: invalid objective difficulty - ", objective.difficulty)
 	
 	objective.is_complete = false
 	
-	error = _save(objective, dir_path + dir_folder + file_prefix + file_name + file_suffix)
+	error = _save(objective, dir_path + dir_folder_difficulty + dir_folder_type + file_prefix + file_name + file_suffix)
 	assert(error == OK, "Save error: " + str(error))
 	print("build completed: ", objective.name)
 	return

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObjectivePlaceCards" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_place_cards.gd" id="1_ab5oh"]
+
+[resource]
+script = ExtResource("1_ab5oh")
+suit = 4
+rank = 12
+num_max = 2
+num_current = 0
+name = "Place 2 Kings in a Row"
+type = 3
+requirement = 2
+difficulty = 1
+payout = 20
+is_complete = false

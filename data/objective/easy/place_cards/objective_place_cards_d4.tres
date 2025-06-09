@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObjectivePlaceCards" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_place_cards.gd" id="1_vux57"]
+
+[resource]
+script = ExtResource("1_vux57")
+suit = 2
+rank = 13
+num_max = 4
+num_current = 0
+name = "Place 4 Diamonds in a Row"
+type = 3
+requirement = 1
+difficulty = 1
+payout = 20
+is_complete = false

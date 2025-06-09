@@ -141,12 +141,10 @@ func _on_run_data_money_changed(money : int) -> void:
 	return
 
 func _on_card_mover_card_placed(card : CardData, tile : Vector2i) -> void:
-	#objective_handler.check_tiles(data.objectives, board.card_grid.get_all_occupied_tiles())
 	objective_handler._on_card_placed(card, tile)
 	return
 
 func _on_card_mover_card_removed(card : CardData, tile : Vector2i) -> void:
-	#objective_handler.check_tiles(data.objectives, board.card_grid.get_all_occupied_tiles())
 	objective_handler._on_card_removed(card, tile)
 	return
 
@@ -161,8 +159,9 @@ func _on_card_spawner_card_not_spawned(card_data : CardData) -> void:
 func _on_button_deal_pressed() -> void:
 	if(run_data.money - data.deal_cost >= 0):
 		_deal_cards(DOCK_SIZE)
-		#run_data.money -= data.deal_cost
+		run_data.money -= data.deal_cost
 		data.deal_cost += data.deal_cost_modifier.cost_increase
+		ui.button_deal.set_cost(data.deal_cost)
 	else:
 		ui.button_deal.flash()
 	return
@@ -170,4 +169,5 @@ func _on_button_deal_pressed() -> void:
 func _on_button_submit_pressed() -> void:
 	_evaluate_board()
 	data.deal_cost = data.deal_cost_modifier.initial_cost
+	
 	return

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ObjectivePlaceCards" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/objective/objective_place_cards.gd" id="1_ngd5q"]
+
+[resource]
+script = ExtResource("1_ngd5q")
+suit = 1
+rank = 13
+num_max = 8
+num_current = 0
+name = "Place 8 Hearts in a Row"
+type = 3
+requirement = 1
+difficulty = 2
+payout = 30
+is_complete = false
