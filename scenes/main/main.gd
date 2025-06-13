@@ -17,22 +17,9 @@ func _ready() -> void:
 	var run_data : RunData = RunData.new()
 	run_data.load_modifier(RUN_MODIFIER_STANDARD)
 	
-	#var pay_table : PayTable = PAY_TABLE_STANDARD
-	#var o0 : Objective = load("res://data/objective/make_hand/objectives/objective_make_hand_pair.tres")
-	#var o1 : Objective = load("res://data/objective/make_hand/objectives/objective_make_hand_flush_d.tres")
-	#var o2 : Objective = load("res://data/objective/fill_tiles/objectives/objective_fill_tiles_col_1.tres")
-	#var o3 : Objective = load("res://data/objective/fill_tiles/objectives/objective_fill_tiles_v.tres")
-	#var o4 : Objective = load("res://data/objective/place_cards/objectives/objective_place_cards_c4.tres")
 	
-	var level_data : LevelData = LevelBuilder.build(LevelData.Difficulty.VERY_EASY) #LevelData.new()
-	#level_data.pay_table = pay_table
-	#level_data.deal_cost_modifier = DEAL_COST_MODIFIER_1_1
-	#level_data.grid_modifier = GRID_MODIFIER_STANDARD
-	#level_data.add_objective(o0)
-	#level_data.add_objective(o1)
-	#level_data.add_objective(o2)
-	#level_data.add_objective(o3)
-	#level_data.add_objective(o4)
+	var level_data : LevelData = LevelBuilder.build(LevelData.Difficulty.VERY_EASY)
+	print(level_data.grid_modifier)
 	
 	
 	level.run_data = run_data

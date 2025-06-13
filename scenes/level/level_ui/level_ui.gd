@@ -1,10 +1,10 @@
 extends Control
-class_name UI
+class_name LevelUI
 
 signal button_deal_pressed
 signal button_submit_pressed
 
-const PANEL_OBJECTIVE : PackedScene = preload("res://scenes/ui/panel_objective/panel_objective.tscn")
+const PANEL_OBJECTIVE : PackedScene = preload("res://scenes/level/level_ui/panel_objective/panel_objective.tscn")
 
 var panel_objectives : Array[PanelObjective] = []
 
@@ -66,7 +66,7 @@ func set_score(value : int) -> void:
 	return
 
 func set_score_goal(value : int) -> void:
-	
+	label_score_goal.text = str(value)
 	return
 
 func set_money(value : int) -> void:

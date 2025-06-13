@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj6585yjik4u1"]
+
+[ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="1_moni1"]
+[ext_resource type="Texture2D" uid="uid://bnieeduej1oi0" path="res://assets/sprites/misc/card_grid_icon.png" id="2_2il6f"]
+[ext_resource type="Script" uid="uid://uojnb1uy6v60" path="res://scenes/run/run_ui/panel_level_data/container_objective/container_objective.gd" id="2_q7bk4"]
+[ext_resource type="Script" uid="uid://c8cq442dbpvnv" path="res://components/fill_tiles_icon.gd" id="4_o08v1"]
+
+[node name="ContainerObjective" type="HBoxContainer"]
+offset_right = 185.0
+offset_bottom = 20.0
+theme = ExtResource("1_moni1")
+script = ExtResource("2_q7bk4")
+
+[node name="LabelPayout" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_moni1")
+text = "$10"
+
+[node name="LabelName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_moni1")
+text = "Place 5 Diamonds in a Row"
+
+[node name="TextureRectTiles" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_moni1")
+texture = ExtResource("2_2il6f")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="FillTilesIcon" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_o08v1")
+metadata/_custom_type_script = "uid://c8cq442dbpvnv"

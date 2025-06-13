@@ -5,6 +5,7 @@ var label_name : Label = null
 var label_payout : Label = null
 var label_requirement : Label = null
 var texture_rect_tiles : TextureRect = null
+var fill_tiles_icon : FillTilesIcon = null
 var label_progress : Label = null
 
 func _ready() -> void:
@@ -12,8 +13,10 @@ func _ready() -> void:
 	label_payout = %LabelPayout
 	label_requirement = %LabelRequirement
 	texture_rect_tiles = %TextureRectTiles
+	fill_tiles_icon = %FillTilesIcon
 	label_progress = %LabelProgress
 	
+	fill_tiles_icon.texture_rect = texture_rect_tiles
 	texture_rect_tiles.hide()
 	return
 
@@ -33,8 +36,8 @@ func update(objective : Objective) -> void:
 		Objective.Type.FILL_TILES:
 			requirement_text += "Fill tiles:"
 			texture_rect_tiles.show()
-			_fill_tiles((objective as ObjectiveFillTiles).tiles_to_place, Color.WHITE)
-			_fill_tiles((objective as ObjectiveFillTiles).tiles_placed, Color.GREEN)
+			fill_tiles_icon.update((objective as ObjectiveFillTiles).tiles_to_place, Color.WHITE)
+			fill_tiles_icon.update((objective as ObjectiveFillTiles).tiles_placed, Color.GREEN)
 		Objective.Type.PLACE_CARDS:
 			requirement_text += str(clamp(objective.num_current, 0, ObjectivePlaceCards.MAX)) + "/" + str(objective.num_max) + " "
 			if(objective.suit != CardData.SUIT_ERROR):
@@ -47,14 +50,4 @@ func update(objective : Objective) -> void:
 			print("error: unrecognized objective type - ", objective.type)
 	label_requirement.text = requirement_text
 	label_progress.text = "Complete" if objective.is_complete else "Incomplete"
-	return
-
-# sets specified tiles in the tile indicator texture rect to the specified color
-func _fill_tiles(tiles_to_fill : Array[Vector2i], color : Color) -> void:
-	var image : Image = texture_rect_tiles.texture.get_image()
-	var image_texture : ImageTexture = ImageTexture.new()
-	for tile : Vector2i in tiles_to_fill:
-		image.set_pixel(tile.x, tile.y, color)
-	image_texture.set_image(image)
-	texture_rect_tiles.texture = image_texture
 	return

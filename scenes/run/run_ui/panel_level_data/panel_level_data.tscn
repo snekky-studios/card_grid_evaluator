@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://y0yufq6cq4f0"]
+
+[ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="1_qx0js"]
+[ext_resource type="Script" uid="uid://b16dir1l43dm1" path="res://scenes/run/run_ui/panel_level_data/panel_level_data.gd" id="2_upxfw"]
+[ext_resource type="Script" uid="uid://c3easqwc50xtl" path="res://scenes/run/run_ui/panel_level_data/container_grid_modifier/container_grid_modifier.gd" id="3_rx4sd"]
+
+[node name="PanelLevelData" type="PanelContainer"]
+custom_minimum_size = Vector2(246, 0)
+offset_right = 79.0
+offset_bottom = 75.0
+mouse_filter = 1
+theme = ExtResource("1_qx0js")
+script = ExtResource("2_upxfw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="ContainerGridModifier" type="GridContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(71, 71)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_qx0js")
+columns = 5
+script = ExtResource("3_rx4sd")
+metadata/_custom_type_script = "uid://c3easqwc50xtl"
+
+[node name="VBoxContainerObjectives" type="VBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_qx0js")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

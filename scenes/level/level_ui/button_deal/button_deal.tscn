@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dkqga2w6y4mnd"]
 
-[ext_resource type="Script" uid="uid://b14kxx0njegv1" path="res://scenes/ui/button_deal/button_deal.gd" id="1_iw4xn"]
+[ext_resource type="Script" uid="uid://b14kxx0njegv1" path="res://scenes/level/level_ui/button_deal/button_deal.gd" id="1_iw4xn"]
 [ext_resource type="Shader" uid="uid://hnlyrwoo0g4k" path="res://components/shaders/2d_outline.gdshader" id="2_xsrxp"]
 [ext_resource type="Shader" uid="uid://b4ebpp86vknoj" path="res://components/shaders/flash.gdshader" id="3_bs174"]
 [ext_resource type="Script" uid="uid://ddaliy5pnt56b" path="res://components/outline_highlighter.gd" id="3_mww2l"]

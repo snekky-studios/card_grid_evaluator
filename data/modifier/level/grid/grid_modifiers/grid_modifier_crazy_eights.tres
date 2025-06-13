@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="GridModifier" load_steps=6 format=3 uid="uid://cymqfct4mso7t"]
+[gd_resource type="Resource" script_class="GridModifier" load_steps=7 format=3 uid="uid://cymqfct4mso7t"]
 
 [ext_resource type="Resource" path="res://data/card/cards/card_8s.tres" id="1_5dx3e"]
+[ext_resource type="Script" uid="uid://bji3yx4ti63yh" path="res://data/card/card_data.gd" id="1_8dw62"]
 [ext_resource type="Resource" path="res://data/card/cards/card_8h.tres" id="2_jjm1g"]
 [ext_resource type="Resource" path="res://data/card/cards/card_8d.tres" id="3_gnpb8"]
 [ext_resource type="Resource" path="res://data/card/cards/card_8c.tres" id="4_2wj1u"]
@@ -8,7 +9,7 @@
 
 [resource]
 script = ExtResource("5_iv2w8")
-cards = {
+cards = Dictionary[Vector2i, ExtResource("1_8dw62")]({
 Vector2i(0, 0): null,
 Vector2i(0, 1): null,
 Vector2i(0, 2): null,
@@ -34,4 +35,4 @@ Vector2i(4, 1): null,
 Vector2i(4, 2): null,
 Vector2i(4, 3): null,
 Vector2i(4, 4): null
-}
+})

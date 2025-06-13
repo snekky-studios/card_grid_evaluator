@@ -18,6 +18,6 @@ func _ready() -> void:
 	#print(GRID_MODIFIER_TWO_TOWERS._to_string())
 	#print("gone_fishing")
 	#print(GRID_MODIFIER_GONE_FISHING._to_string())
-	var level_data : LevelData = LevelBuilder.build(LevelData.Difficulty.MEDIUM)
-	print(level_data._to_string())
+	#var level_data : LevelData = LevelBuilder.build(LevelData.Difficulty.HARD)
+	#print(level_data._to_string())
 	return

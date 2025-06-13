@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsqcnytjhvlrv"]
+[gd_scene load_steps=3 format=3 uid="uid://dsqcnytjhvlrv"]
 
 [ext_resource type="Script" uid="uid://b3t0erwmeel6c" path="res://scenes/run/run.gd" id="1_8rlou"]
+[ext_resource type="PackedScene" uid="uid://c5laufd7jhhye" path="res://scenes/run/run_ui/run_ui.tscn" id="2_l7o68"]
 
 [node name="Run" type="Node"]
 script = ExtResource("1_8rlou")
+
+[node name="RunUi" parent="." instance=ExtResource("2_l7o68")]
+unique_name_in_owner = true

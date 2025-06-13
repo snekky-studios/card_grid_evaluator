@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cf7g2ofmcgki1"]
+
+[ext_resource type="FontFile" uid="uid://3nan4hbi5d58" path="res://assets/fonts/m5x7.ttf" id="1_xy621"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ndjfm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndjfm"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.054902, 0.192157, 0.329412, 1)
+
+[resource]
+default_font = ExtResource("1_xy621")
+default_font_size = 32
+Button/styles/focus = SubResource("StyleBoxEmpty_ndjfm")
+Label/colors/font_color = Color(1, 0.968627, 0.972549, 1)
+Label/constants/line_spacing = 0
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_xy621")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ndjfm")

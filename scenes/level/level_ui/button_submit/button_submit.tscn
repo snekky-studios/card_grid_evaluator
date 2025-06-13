@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://8r4anlj5fr5l"]
 
-[ext_resource type="Script" uid="uid://dchijeis1ytx6" path="res://scenes/ui/button_submit/button_submit.gd" id="1_kbl4c"]
+[ext_resource type="Script" uid="uid://dchijeis1ytx6" path="res://scenes/level/level_ui/button_submit/button_submit.gd" id="1_kbl4c"]
 [ext_resource type="Shader" uid="uid://hnlyrwoo0g4k" path="res://components/shaders/2d_outline.gdshader" id="2_3yeds"]
 [ext_resource type="Texture2D" uid="uid://bcs3ttqjj02fq" path="res://assets/sprites/card/check_mark_funkyfuture-8.png" id="3_2pjts"]
 [ext_resource type="Script" uid="uid://ddaliy5pnt56b" path="res://components/outline_highlighter.gd" id="4_e3c7h"]

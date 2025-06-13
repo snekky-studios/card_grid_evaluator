@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7r34wjdyv8kl" path="res://scenes/card_map/card_map.tscn" id="2_65r54"]
 [ext_resource type="Script" uid="uid://2tkk0c62x6x8" path="res://scenes/level/card_mover.gd" id="4_irnlk"]
 [ext_resource type="Script" uid="uid://c50aivg6d2o64" path="res://scenes/level/card_spawner.gd" id="5_eyudv"]
-[ext_resource type="PackedScene" uid="uid://exbh3acvat56" path="res://scenes/ui/ui.tscn" id="5_hnne4"]
+[ext_resource type="PackedScene" uid="uid://exbh3acvat56" path="res://scenes/level/level_ui/level_ui.tscn" id="5_hnne4"]
 [ext_resource type="Script" uid="uid://b84ruwb2ec7o5" path="res://scenes/level/objective_handler.gd" id="5_vpf64"]
 
 [node name="Level" type="Node"]

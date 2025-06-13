@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpwcxsfij7uo5"]
+
+[ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="1_xd54j"]
+[ext_resource type="Script" uid="uid://c3easqwc50xtl" path="res://scenes/run/run_ui/panel_level_data/container_grid_modifier/container_grid_modifier.gd" id="2_y6fxp"]
+
+[node name="ContainerGridModifier" type="GridContainer"]
+theme = ExtResource("1_xd54j")
+theme_override_constants/h_separation = -1
+theme_override_constants/v_separation = -1
+script = ExtResource("2_y6fxp")

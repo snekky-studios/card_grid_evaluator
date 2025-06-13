@@ -14,7 +14,7 @@ var dock : CardMap = null
 var card_mover : CardMover = null
 var card_spawner : CardSpawner = null
 var objective_handler : ObjectiveHandler = null
-var ui : UI = null
+var ui : LevelUI = null
 
 func _ready() -> void:
 	board = %Board

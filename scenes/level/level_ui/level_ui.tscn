@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://exbh3acvat56"]
 
-[ext_resource type="Script" uid="uid://0lcys1k42thd" path="res://scenes/ui/ui.gd" id="1_u7n8c"]
-[ext_resource type="PackedScene" uid="uid://dkqga2w6y4mnd" path="res://scenes/ui/button_deal/button_deal.tscn" id="2_0dwhk"]
-[ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="2_g5kmx"]
-[ext_resource type="PackedScene" uid="uid://8r4anlj5fr5l" path="res://scenes/ui/button_submit/button_submit.tscn" id="3_pfayw"]
+[ext_resource type="Script" uid="uid://0lcys1k42thd" path="res://scenes/level/level_ui/level_ui.gd" id="1_875b5"]
+[ext_resource type="PackedScene" uid="uid://dkqga2w6y4mnd" path="res://scenes/level/level_ui/button_deal/button_deal.tscn" id="2_j28vr"]
+[ext_resource type="PackedScene" uid="uid://8r4anlj5fr5l" path="res://scenes/level/level_ui/button_submit/button_submit.tscn" id="3_uxyov"]
+[ext_resource type="Theme" uid="uid://cd5n2wr2q5c3q" path="res://assets/themes/ui_theme.tres" id="4_1h3jp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5kmx"]
 content_margin_left = 2.0
@@ -11,7 +11,7 @@ content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
 
-[node name="UI" type="Control"]
+[node name="LevelUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,13 +20,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-script = ExtResource("1_u7n8c")
+script = ExtResource("1_875b5")
 
-[node name="ButtonDeal" parent="." instance=ExtResource("2_0dwhk")]
+[node name="ButtonDeal" parent="." instance=ExtResource("2_j28vr")]
 unique_name_in_owner = true
 position = Vector2(256, 288)
 
-[node name="ButtonSubmit" parent="." instance=ExtResource("3_pfayw")]
+[node name="ButtonSubmit" parent="." instance=ExtResource("3_uxyov")]
 unique_name_in_owner = true
 position = Vector2(320, 288)
 
@@ -39,24 +39,24 @@ offset_bottom = 29.0
 
 [node name="Label" type="Label" parent="HBoxContainerScore"]
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 text = "Score:"
 
 [node name="LabelScore" type="Label" parent="HBoxContainerScore"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 text = "0"
 
 [node name="LabelSlash" type="Label" parent="HBoxContainerScore"]
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 text = "/"
 
 [node name="LabelScoreGoal" type="Label" parent="HBoxContainerScore"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 text = "0"
 
 [node name="HBoxContainerMoney" type="HBoxContainer" parent="."]
@@ -68,13 +68,13 @@ offset_bottom = 45.0
 
 [node name="Label" type="Label" parent="HBoxContainerMoney"]
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 text = "Money:"
 
 [node name="LabelMoney" type="Label" parent="HBoxContainerMoney"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 text = "$10"
 
 [node name="VBoxContainerObjectives" type="VBoxContainer" parent="."]
@@ -102,12 +102,12 @@ offset_right = 62.0
 offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_styles/panel = SubResource("StyleBoxFlat_g5kmx")
 
 [node name="VBoxContainerHands" type="VBoxContainer" parent="PanelContainerHands"]
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 
 [node name="HBoxContainerRow0" type="HBoxContainer" parent="PanelContainerHands/VBoxContainerHands"]
 layout_mode = 2
@@ -115,7 +115,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerRow0"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Row 0:"
 
@@ -123,7 +123,7 @@ text = "Row 0:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -134,7 +134,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerRow1"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Row 1:"
 
@@ -142,7 +142,7 @@ text = "Row 1:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -153,7 +153,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerRow2"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Row 2:"
 
@@ -161,7 +161,7 @@ text = "Row 2:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -172,7 +172,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerRow3"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Row 3:"
 
@@ -180,7 +180,7 @@ text = "Row 3:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -191,7 +191,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerRow4"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Row 4:"
 
@@ -199,7 +199,7 @@ text = "Row 4:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -210,7 +210,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerCol0"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Col 0:"
 
@@ -218,7 +218,7 @@ text = "Col 0:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -229,7 +229,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerCol1"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Col 1:"
 
@@ -237,7 +237,7 @@ text = "Col 1:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -248,7 +248,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerCol2"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Col 2:"
 
@@ -256,7 +256,7 @@ text = "Col 2:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -267,7 +267,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerCol3"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Col 3:"
 
@@ -275,7 +275,7 @@ text = "Col 3:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2
@@ -286,7 +286,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainerHands/VBoxContainerHands/HBoxContainerCol4"]
 custom_minimum_size = Vector2(33, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "Col 4:"
 
@@ -294,7 +294,7 @@ text = "Col 4:"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(87, 0)
 layout_mode = 2
-theme = ExtResource("2_g5kmx")
+theme = ExtResource("4_1h3jp")
 theme_override_font_sizes/font_size = 16
 text = "NONE"
 horizontal_alignment = 2

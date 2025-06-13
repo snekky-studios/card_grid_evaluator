@@ -4,7 +4,7 @@ class_name GridModifier
 const EMPTY_TILE_STRING : String = "**"
 
 # a list of cards that will be fixed to the grid at the start of the level, indexed by tile
-@export var cards : Dictionary = {}
+@export var cards : Dictionary[Vector2i, CardData] = {}
 
 func _to_string() -> String:
 	var output : String = ""

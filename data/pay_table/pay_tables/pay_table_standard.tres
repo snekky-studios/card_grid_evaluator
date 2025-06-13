@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_hddxt")
-payouts = {
+payouts = Dictionary[int, int]({
 0: 0,
 1: 0,
 2: 1,
@@ -15,5 +15,5 @@ payouts = {
 7: 9,
 8: 25,
 9: 50
-}
+})
 metadata/_custom_type_script = "uid://c4r5tjeupo1bj"

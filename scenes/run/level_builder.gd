@@ -150,6 +150,7 @@ static func _build_objectives(difficulty : LevelData.Difficulty) -> Array[Object
 		# get how many objectives of that difficulty to add
 		var num_objectives : int = objective_difficulties[objective_difficulty]
 		var dir_path_objective_difficulty : String = OBJECTIVE_DIFFICULTY_DIR_PATHS[objective_difficulty]
+		var objectives_already_picked : Array[String] = [] # keeps track of objectives that have already been picked so we don't pick the same one twice
 		# add an objective of each difficulty the number of times specified in the dictionary
 		for index_objective_difficulty : int in range(num_objectives):
 			# pick a random objective type, then choose a random objective of that type and the specified difficulty
@@ -158,6 +159,10 @@ static func _build_objectives(difficulty : LevelData.Difficulty) -> Array[Object
 			var dir_path_objective_full : String = dir_path_objective + dir_path_objective_difficulty + dir_path_objective_type
 			var resource_files : PackedStringArray = DirAccess.get_files_at(dir_path_objective_full)
 			var file_name_objective : String = resource_files[randi_range(0, resource_files.size() - 1)]
+			# make sure we don't pick the same objective twice
+			while(file_name_objective in objectives_already_picked):
+				file_name_objective = resource_files[randi_range(0, resource_files.size() - 1)]
+			objectives_already_picked.append(file_name_objective)
 			var objective : Objective = load(dir_path_objective_full + file_name_objective)
 			objectives.append(objective)
 	return objectives
